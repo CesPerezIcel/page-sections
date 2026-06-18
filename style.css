@@ -23,8 +23,6 @@ body {
     max-width: 300px;          
     background-color: #ffffff; /* Fondo blanco */
     padding: 25px;
-
-    
     border-radius: 12px;       /* Bordes redondeados */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave */
     transition: transform 0.3s ease;
@@ -48,3 +46,24 @@ body {
     line-height: 1.6;
     color: #555;
 }
+
+/* ===================================================
+   3. REGLA RESPONSIVA (Para Celulares y pantallas chicas)
+   =================================================== */
+@media (max-width: 600px) {
+    .contenedor-cafe {
+        padding: 20px 10px;      /* Menos espacio a los lados en pantallas chicas */
+        flex-direction: column;  /* Las tarjetas se acomodan una abajo de otra */
+        align-items: center;
+    }
+
+    .tarjeta {
+        width: 100%;             /* Las tarjetas ocupan el ancho disponible */
+        max-width: 90%; 
+    }
+    
+    header h1 {
+        font-size: 2rem;         /* Reducimos un poco el título en celular */
+    }
+}
+
