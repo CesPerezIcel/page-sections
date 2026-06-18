@@ -6,36 +6,74 @@ body {
     margin: 0;
 }
 
-/* 1. ACTIVAMOS FLEXBOX EN EL CONTENEDOR PADRE */
-.contenedor-cafe {
+/* ===================================================
+   ESTILOS DE LA NAVBAR (USANDO FLEXBOX)
+   =================================================== */
+.navbar {
     display: flex;
-    flex-direction: row;       /* Alinea las tarjetas en fila */
-    flex-wrap: wrap;           /* Si es celular, las tarjetas se bajan solas */
-    justify-content: center;   /* Centra todo el bloque en la pantalla */
-    gap: 20px;                 /* Separa las tarjetas limpiamente */
-    padding: 40px 20px;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;            /* Centrado vertical perfecto */
+    background-color: #4a3525;      /* Color café oscuro elegante */
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 2. DISEÑO PARA LAS TARJETAS (LOS HIJOS) */
+.navbar-logo {
+    color: #fcf8f2;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    display: flex;                  /* Menú en fila horizontal con Flexbox */
+    gap: 20px;                      /* Espacio limpio entre enlaces */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu a {
+    color: #e6ccb2;                 /* Tono capuchino claro */
+    text-decoration: none;        /* Quita la línea de abajo */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por el menú */
+.navbar-menu a:hover {
+    color: #ffffff;
+}
+
+/* ===================================================
+   CONTENEDOR PRINCIPAL (FLEXBOX)
+   =================================================== */
+.contenedor-cafe {
+    display: flex;
+    flex-direction: row;       
+    flex-wrap: wrap;           
+    justify-content: center;   
+    gap: 20px;                 
+    padding: 20px 20px 40px 20px;
+}
+
+/* DISEÑO PARA LAS TARJETAS */
 .tarjeta {
     flex: 1;
     min-width: 250px;          
     max-width: 300px;          
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff; 
     padding: 25px;
-    border-radius: 12px;       /* Bordes redondeados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    border-radius: 12px;       
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
     transition: transform 0.3s ease;
 }
 
-/* Efecto cuando pasas el mouse por encima */
 .tarjeta:hover {
     transform: translateY(-5px);
 }
 
-/* Estilo para los títulos de cada sección */
 .tarjeta h2 {
-    color: #6f4e37;            /* Color café */
+    color: #6f4e37;            
     margin-top: 0;
     font-size: 1.5rem;
     border-bottom: 2px solid #f0e6df;
@@ -48,22 +86,32 @@ body {
 }
 
 /* ===================================================
-   3. REGLA RESPONSIVA (Para Celulares y pantallas chicas)
+   REGLA RESPONSIVA (Para Celulares)
    =================================================== */
 @media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;  /* En celular, el logo va arriba y el menú abajo */
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .navbar-menu {
+        gap: 15px;
+    }
+
     .contenedor-cafe {
-        padding: 20px 10px;      /* Menos espacio a los lados en pantallas chicas */
-        flex-direction: column;  /* Las tarjetas se acomodan una abajo de otra */
+        padding: 20px 10px;      
+        flex-direction: column;  
         align-items: center;
     }
 
     .tarjeta {
-        width: 100%;             /* Las tarjetas ocupan el ancho disponible */
+        width: 100%;             
         max-width: 90%; 
     }
     
     header h1 {
-        font-size: 2rem;         /* Reducimos un poco el título en celular */
+        font-size: 1.8rem;         
     }
 }
 
