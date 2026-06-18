@@ -1,0 +1,48 @@
+/* Estilos generales para el fondo de la página */
+body {
+    background-color: #fcf8f2; /* Color crema suave */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+/* 1. ACTIVAMOS FLEXBOX EN EL CONTENEDOR PADRE */
+.contenedor-cafe {
+    display: flex;
+    flex-direction: row;       /* Alinea las tarjetas en fila (una al lado de la otra) */
+    flex-wrap: wrap;           /* Si la pantalla es chica (como un celular), las tarjetas se bajan solas */
+    justify-content: center;   /* Centra todo el bloque en la pantalla */
+    gap: 20px;                 /* Separa las tarjetas limpiamente por 20px */
+    padding: 40px 20px;
+}
+
+/* 2. DISEÑO PARA LAS TARJETAS (LOS HIJOS) */
+.tarjeta {
+    flex: 1;
+    min-width: 250px;          /* No deja que se hagan demasiado delgadas */
+    max-width: 300px;          /* No deja que se estiren de más */
+    background-color: #ffffff; /* Fondo blanco para resaltar */
+    padding: 25px;
+    border-radius: 12px;       /* Bordes redondeados elegantes */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave de fondo */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto visual cuando pasas el mouse por encima */
+.tarjeta:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo para los títulos de cada sección */
+.tarjeta h2 {
+    color: #6f4e37;            /* Color café/marrón elegante */
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #f0e6df;
+    padding-bottom: 10px;
+}
+
+.tarjeta p {
+    line-height: 1.6;
+    color: #555;
+}
