@@ -23,6 +23,8 @@ body {
     max-width: 300px;          
     background-color: #ffffff; /* Fondo blanco */
     padding: 25px;
+
+    
     border-radius: 12px;       /* Bordes redondeados */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave */
     transition: transform 0.3s ease;
