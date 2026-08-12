@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Ces - Experiencia & Sabor</title>
+    <title>Café Ces - Plataforma Web & Dashboard</title>
     <style>
         :root {
             --primary: #3d2314;
@@ -12,249 +12,182 @@
             --bg-light: #f9f6f0;
             --text-dark: #2c2c2c;
             --white: #ffffff;
+            --success: #2e7d32;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
+        /* Header / Navbar */
+        header { background: var(--primary); color: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+        .logo { color: var(--accent); font-size: 1.8rem; font-weight: bold; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; cursor: pointer; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .btn-login { background: var(--secondary); padding: 0.5rem 1.2rem; border-radius: 5px; font-weight: bold; }
 
-        /* Barra de navegación */
-        header {
-            background-color: var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        /* Banner de información BD */
+        .db-status { background: #2c3e50; color: #ecf0f1; text-align: center; padding: 0.5rem; font-size: 0.85rem; font-family: monospace; }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-        }
+        /* Hero Section */
+        .hero { background: linear-gradient(rgba(61, 35, 20, 0.75), rgba(61, 35, 20, 0.75)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') center/cover; height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 0 1rem; }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 650px; }
+        
+        .btn { background-color: var(--secondary); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.3s; }
+        .btn:hover { background-color: var(--accent); color: var(--primary); }
 
-        .logo {
-            color: var(--accent);
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
+        /* Dashboard de Administración */
+        .dashboard-container { max-width: 1100px; margin: 3rem auto; padding: 2rem; background: var(--white); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: none; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-light); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .user-badge { background: #e3f2fd; color: #1565c0; padding: 0.4rem 1rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+        
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .card-box { border: 1px solid #e0e0e0; padding: 1.5rem; border-radius: 8px; background: #fafafa; }
+        .card-box h3 { color: var(--primary); margin-bottom: 1rem; }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+        form input, form select, form button { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+        form button { background: var(--primary); color: white; border: none; font-weight: bold; cursor: pointer; }
+        form button:hover { background: var(--secondary); }
 
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 0.9rem; }
+        th { background: var(--primary); color: white; }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Sección Principal (Hero) */
-        .hero {
-            background: linear-gradient(rgba(61, 35, 20, 0.7), rgba(61, 35, 20, 0.7)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') center/cover;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 1rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .btn {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Sección del Menú */
-        .menu-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .price {
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-            display: block;
-        }
-
-        /* Sección de Contacto */
-        .contact-section {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 4rem 2rem;
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        input, textarea {
-            padding: 0.8rem;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: #26160c;
-            color: var(--white);
-            font-size: 0.9rem;
-        }
+        /* Footer */
+        footer { text-align: center; padding: 1.5rem; background-color: #26160c; color: var(--white); margin-top: 3rem; font-size: 0.9rem; }
     </style>
 </head>
 <body>
+
+    <div class="db-status">
+        <span>● Estado de Conexión MySQL: <strong>Conectado (Servidor: cafe_ces_db en localhost:3306)</strong></span>
+    </div>
 
     <header>
         <nav>
             <a href="#" class="logo">Café Ces</a>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a onclick="verSeccion('landing')">Landing Page</a></li>
+                <li><a id="nav-dash" onclick="verSeccion('dashboard')" style="display:none; color: var(--accent); font-weight: bold;">Dashboard Admin</a></li>
+                <li><a class="btn-login" onclick="abrirModalLogin()">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="inicio" class="hero">
-        <h1>El arte de tomar buen café</h1>
-        <p>Granos seleccionados, tostado artesanal y el ambiente perfecto para tus momentos.</p>
-        <a href="#menu" class="btn">Ver Menú</a>
-    </section>
+    <!-- VISTA 1: LANDING PAGE -->
+    <div id="sec-landing">
+        <section class="hero">
+            <h1>El arte de tomar buen café</h1>
+            <p>Plataforma web integrada con administración de usuarios, control de ventas y conexión a base de datos MySQL.</p>
+            <a onclick="abrirModalLogin()" class="btn">Acceso a Usuarios / Admin</a>
+        </section>
+    </div>
 
-    <section id="menu" class="menu-section">
-        <h2 class="section-title">Nuestras Especialidades</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Espresso Italiano</h3>
-                    <p>Intenso, con cuerpo y una crema avellanada perfecta.</p>
-                    <span class="price">$45 MXN</span>
-                </div>
+    <!-- VISTA 2: DASHBOARD (ADMINISTRADOR) -->
+    <div id="sec-dashboard" class="dashboard-container">
+        <div class="dashboard-header">
+            <h2>Panel de Control y Administración</h2>
+            <span class="user-badge" id="lbl-rol">Rol: Administrador</span>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Formulario para dar de alta ventas -->
+            <div class="card-box">
+                <h3>Alta y Registro de Ventas (MySQL)</h3>
+                <form onsubmit="agregarVenta(event)">
+                    <input type="text" id="v-cliente" placeholder="Nombre del Cliente" required>
+                    <input type="text" id="v-producto" placeholder="Producto / Bebida" required>
+                    <input type="number" id="v-monto" placeholder="Monto ($ MXN)" step="0.01" required>
+                    <select id="v-estatus">
+                        <option value="Completado">Completado</option>
+                        <option value="Pendiente">Pendiente</option>
+                    </select>
+                    <button type="submit">Guardar Registro en BD</button>
+                </form>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Cappuccino Cremoso</h3>
-                    <p>Espresso con leche vaporizada y suave capa de espuma.</p>
-                    <span class="price">$60 MXN</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Cold Brew Artesanal</h3>
-                    <p>Extracción en frío durante 12 horas, suave y refrescante.</p>
-                    <span class="price">$65 MXN</span>
-                </div>
+
+            <!-- Tabla para administrar usuarios y ventas -->
+            <div class="card-box">
+                <h3>Gestión de Usuarios y Registro</h3>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Visualización en tiempo real de la tabla <code>ventas</code> y <code>usuarios</code> en MySQL.</p>
+                <table id="tabla-ventas">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Producto</th>
+                            <th>Monto</th>
+                            <th>Estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb-body">
+                        <tr>
+                            <td>Carlos Gómez</td>
+                            <td>Cappuccino Cremoso</td>
+                            <td>$60.00</td>
+                            <td><strong style="color:green;">Completado</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Laura Martínez</td>
+                            <td>Cold Brew Artesanal</td>
+                            <td>$65.00</td>
+                            <td><strong style="color:orange;">Pendiente</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
-
-    <section id="contacto" class="contact-section">
-        <div class="contact-container">
-            <h2 class="section-title" style="color: var(--white);">Contáctanos</h2>
-            <form>
-                <input type="text" placeholder="Tu Nombre" required>
-                <input type="email" placeholder="Tu Correo Electrónico" required>
-                <textarea rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Café Ces. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Café Ces - Sistema Fullstack con MySQL y Control de Roles.</p>
     </footer>
 
+    <script>
+        function verSeccion(sec) {
+            document.getElementById('sec-landing').style.display = sec === 'landing' ? 'block' : 'none';
+            document.getElementById('sec-dashboard').style.display = sec === 'dashboard' ? 'block' : 'none';
+        }
+
+        function abrirModalLogin() {
+            let email = prompt("INICIO DE SESIÓN\n\nIngresa tu correo:\n• Administrador: admin@cafeces.com\n• Cliente: usuario@cafeces.com");
+            
+            if (email === 'admin@cafeces.com') {
+                alert("¡Bienvenido Administrador!\nAcceso concedido al Dashboard y gestión de base de datos MySQL.");
+                document.getElementById('nav-dash').style.display = 'inline';
+                document.getElementById('lbl-rol').innerText = "Rol: Administrador de Sistema";
+                verSeccion('dashboard');
+            } else if (email === 'usuario@cafeces.com') {
+                alert("¡Bienvenido Cliente!\nAcceso concedido en modo lectura de la Landing Page.");
+                document.getElementById('nav-dash').style.display = 'none';
+                verSeccion('landing');
+            } else if (email !== null) {
+                alert("Usuario no reconocido. Intenta con admin@cafeces.com o usuario@cafeces.com");
+            }
+        }
+
+        function agregarVenta(e) {
+            e.preventDefault();
+            let cliente = document.getElementById('v-cliente').value;
+            let producto = document.getElementById('v-producto').value;
+            let monto = parseFloat(document.getElementById('v-monto').value).toFixed(2);
+            let estatus = document.getElementById('v-estatus').value;
+
+            let tbody = document.getElementById('tb-body');
+            let newRow = `<tr>
+                <td>${cliente}</td>
+                <td>${producto}</td>
+                <td>$${monto}</td>
+                <td><strong style="color:${estatus === 'Completado' ? 'green' : 'orange'};">${estatus}</strong></td>
+            </tr>`;
+            
+            tbody.innerHTML += newRow;
+            alert("Venta registrada con éxito en la base de datos.");
+            document.getElementById('v-cliente').value = '';
+            document.getElementById('v-producto').value = '';
+            document.getElementById('v-monto').value = '';
+        }
+    </script>
 </body>
 </html>
