@@ -3,52 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Ces</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Café Ces - Experiencia & Sabor</title>
+    <style>
+        :root {
+            --primary: #3d2314;
+            --secondary: #c89666;
+            --accent: #e1b382;
+            --bg-light: #f9f6f0;
+            --text-dark: #2c2c2c;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Barra de navegación */
+        header {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sección Principal (Hero) */
+        .hero {
+            background: linear-gradient(rgba(61, 35, 20, 0.7), rgba(61, 35, 20, 0.7)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Sección del Menú */
+        .menu-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        /* Sección de Contacto */
+        .contact-section {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #26160c;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- BARRA DE NAVEGACIÓN (NAVBAR) -->
-    <nav class="navbar">
-        <div class="navbar-logo">Café Ces ☕</div>
-        <ul class="navbar-menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Menú</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <!-- Título principal -->
-    <header style="text-align: center; padding: 40px 20px 20px 20px;">
-        <h1>Bienvenidos a Café Ces</h1>
+    <header>
+        <nav>
+            <a href="#" class="logo">Café Ces</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- CONTENEDOR PADRE DE FLEXBOX -->
-    <main class="contenedor-cafe">
-        
-        <section class="tarjeta">
-            <h2>Bienvenidos</h2>
-            <p>Café Ces ofrece bebidas preparadas con granos seleccionados de alta calidad.</p>
-        </section>
+    <section id="inicio" class="hero">
+        <h1>El arte de tomar buen café</h1>
+        <p>Granos seleccionados, tostado artesanal y el ambiente perfecto para tus momentos.</p>
+        <a href="#menu" class="btn">Ver Menú</a>
+    </section>
 
-        <section class="tarjeta">
-            <h2>Nuestro Café</h2>
-            <p>Contamos con café americano, espresso, capuchino y bebidas especiales.</p>
-        </section>
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Nuestras Especialidades</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Espresso Italiano</h3>
+                    <p>Intenso, con cuerpo y una crema avellanada perfecta.</p>
+                    <span class="price">$45 MXN</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Cappuccino Cremoso</h3>
+                    <p>Espresso con leche vaporizada y suave capa de espuma.</p>
+                    <span class="price">$60 MXN</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Cold Brew Artesanal</h3>
+                    <p>Extracción en frío durante 12 horas, suave y refrescante.</p>
+                    <span class="price">$65 MXN</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="tarjeta">
-            <h2>Nuestras Ventajas</h2>
-            <p>Café recién molido, excelente atención y un ambiente agradable para nuestros clientes.</p>
-        </section>
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title" style="color: var(--white);">Contáctanos</h2>
+            <form>
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Correo Electrónico" required>
+                <textarea rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
 
-        <section class="tarjeta">
-            <h2>Contacto</h2>
-            <p>Visítanos y disfruta del mejor café artesanal de la zona.</p>
-        </section>
-
-    </main>
+    <footer>
+        <p>&copy; 2026 Café Ces. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
-
