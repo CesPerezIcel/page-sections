@@ -1,193 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Ces - Plataforma Web & Dashboard</title>
-    <style>
-        :root {
-            --primary: #3d2314;
-            --secondary: #c89666;
-            --accent: #e1b382;
-            --bg-light: #f9f6f0;
-            --text-dark: #2c2c2c;
-            --white: #ffffff;
-            --success: #2e7d32;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Básico y Metadatos -->
+  <title>Café Aurora | Especialidad, Panadería Artesanal y Espacio Co-Working</title>
+  <meta name="description" content="Café de especialidad, panadería recién horneada y el mejor ambiente para trabajar o relajarte. Visítanos en nuestra sucursal o haz tu pedido en línea.">
+  <meta name="keywords" content="café de especialidad, cafetería, panadería artesanal, coworking, café aurora">
+  <meta name="author" content="César Alejandro Pérez Rodríguez">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cesperezicel.github.io/page-sections/">
 
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+  <!-- Favicon (Ícono SVG integrado) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
 
-        /* Header / Navbar */
-        header { background: var(--primary); color: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
-        .logo { color: var(--accent); font-size: 1.8rem; font-weight: bold; text-decoration: none; }
-        .nav-links { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
-        .nav-links a { color: var(--white); text-decoration: none; cursor: pointer; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-        .btn-login { background: var(--secondary); padding: 0.5rem 1.2rem; border-radius: 5px; font-weight: bold; }
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:title" content="Café Aurora | Tu pausa perfecta del día">
+  <meta property="og:description" content="Descubre el sabor del café artesanal y disfruta de un espacio único en Café Aurora.">
+  <meta property="og:type" content="website">
 
-        /* Banner de información BD */
-        .db-status { background: #2c3e50; color: #ecf0f1; text-align: center; padding: 0.5rem; font-size: 0.85rem; font-family: monospace; }
-
-        /* Hero Section */
-        .hero { background: linear-gradient(rgba(61, 35, 20, 0.75), rgba(61, 35, 20, 0.75)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200') center/cover; height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 0 1rem; }
-        .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 650px; }
-        
-        .btn { background-color: var(--secondary); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.3s; }
-        .btn:hover { background-color: var(--accent); color: var(--primary); }
-
-        /* Dashboard de Administración */
-        .dashboard-container { max-width: 1100px; margin: 3rem auto; padding: 2rem; background: var(--white); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: none; }
-        .dashboard-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg-light); padding-bottom: 1rem; margin-bottom: 2rem; }
-        .user-badge { background: #e3f2fd; color: #1565c0; padding: 0.4rem 1rem; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
-        
-        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .card-box { border: 1px solid #e0e0e0; padding: 1.5rem; border-radius: 8px; background: #fafafa; }
-        .card-box h3 { color: var(--primary); margin-bottom: 1rem; }
-
-        form input, form select, form button { width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
-        form button { background: var(--primary); color: white; border: none; font-weight: bold; cursor: pointer; }
-        form button:hover { background: var(--secondary); }
-
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 0.9rem; }
-        th { background: var(--primary); color: white; }
-
-        /* Footer */
-        footer { text-align: center; padding: 1.5rem; background-color: #26160c; color: var(--white); margin-top: 3rem; font-size: 0.9rem; }
-    </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="db-status">
-        <span>● Estado de Conexión MySQL: <strong>Conectado (Servidor: cafe_ces_db en localhost:3306)</strong></span>
-    </div>
+  <!-- Navegación Funcional -->
+  <header>
+    <nav class="nav-container">
+      <a href="#" class="logo" aria-label="Café Aurora Inicio">☕ Café Aurora</a>
+      <ul class="nav-menu">
+        <li><a href="#propuesta">Nosotros</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#productos">Menú</a></li>
+        <li><a href="#testimonios">Opiniones</a></li>
+        <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header>
-        <nav>
-            <a href="#" class="logo">Café Ces</a>
-            <ul class="nav-links">
-                <li><a onclick="verSeccion('landing')">Landing Page</a></li>
-                <li><a id="nav-dash" onclick="verSeccion('dashboard')" style="display:none; color: var(--accent); font-weight: bold;">Dashboard Admin</a></li>
-                <li><a class="btn-login" onclick="abrirModalLogin()">Iniciar Sesión</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- VISTA 1: LANDING PAGE -->
-    <div id="sec-landing">
-        <section class="hero">
-            <h1>El arte de tomar buen café</h1>
-            <p>Plataforma web integrada con administración de usuarios, control de ventas y conexión a base de datos MySQL.</p>
-            <a onclick="abrirModalLogin()" class="btn">Acceso a Usuarios / Admin</a>
-        </section>
-    </div>
-
-    <!-- VISTA 2: DASHBOARD (ADMINISTRADOR) -->
-    <div id="sec-dashboard" class="dashboard-container">
-        <div class="dashboard-header">
-            <h2>Panel de Control y Administración</h2>
-            <span class="user-badge" id="lbl-rol">Rol: Administrador</span>
+  <main>
+    <!-- Hero Section con Mensaje Claro y CTA Principal -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>Tu pausa especial en cada taza de café</h1>
+        <p class="hero-subtitle">Grano artesanal 100% mexicano, panadería recién horneada y el ambiente perfecto con WiFi de alta velocidad para trabajar o conectar.</p>
+        <div class="hero-cta">
+          <a href="#contacto" class="btn btn-primary" title="Ir al formulario de contacto y pedidos">Ordena o Pide una Mesa</a>
+          <a href="#productos" class="btn btn-secondary">Ver Menú de Especialidad</a>
         </div>
+      </div>
+    </section>
 
-        <div class="dashboard-grid">
-            <!-- Formulario para dar de alta ventas -->
-            <div class="card-box">
-                <h3>Alta y Registro de Ventas (MySQL)</h3>
-                <form onsubmit="agregarVenta(event)">
-                    <input type="text" id="v-cliente" placeholder="Nombre del Cliente" required>
-                    <input type="text" id="v-producto" placeholder="Producto / Bebida" required>
-                    <input type="number" id="v-monto" placeholder="Monto ($ MXN)" step="0.01" required>
-                    <select id="v-estatus">
-                        <option value="Completado">Completado</option>
-                        <option value="Pendiente">Pendiente</option>
-                    </select>
-                    <button type="submit">Guardar Registro en BD</button>
-                </form>
-            </div>
+    <!-- Propuesta de Valor -->
+    <section class="seccion" id="propuesta">
+      <div class="contenedor text-center">
+        <h2>¿Por qué elegir Café Aurora?</h2>
+        <p class="lead">Combinamos la pasión por el tostado perfecto con un entorno pensado para inspirar tu día a día, ofreciendo calidad de origen directo en cada extracción.</p>
+      </div>
+    </section>
 
-            <!-- Tabla para administrar usuarios y ventas -->
-            <div class="card-box">
-                <h3>Gestión de Usuarios y Registro</h3>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Visualización en tiempo real de la tabla <code>ventas</code> y <code>usuarios</code> en MySQL.</p>
-                <table id="tabla-ventas">
-                    <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Producto</th>
-                            <th>Monto</th>
-                            <th>Estatus</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tb-body">
-                        <tr>
-                            <td>Carlos Gómez</td>
-                            <td>Cappuccino Cremoso</td>
-                            <td>$60.00</td>
-                            <td><strong style="color:green;">Completado</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Laura Martínez</td>
-                            <td>Cold Brew Artesanal</td>
-                            <td>$65.00</td>
-                            <td><strong style="color:orange;">Pendiente</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <!-- Sección de Beneficios -->
+    <section class="seccion bg-light" id="beneficios">
+      <div class="contenedor">
+        <h2 class="text-center">Beneficios para nuestros visitantes</h2>
+        <div class="grid-3">
+          <article class="card-benefit">
+            <h3>☕ Granos de Especialidad</h3>
+            <p>Café de origen ético traído directamente de fincas en Chiapas y Veracruz, tostado semanalmente.</p>
+          </article>
+          <article class="card-benefit">
+            <h3>🥐 Panadería Artesanal</h3>
+            <p>Piezas horneadas cada mañana con ingredientes naturales, sin conservadores ni saborizantes artificiales.</p>
+          </article>
+          <article class="card-benefit">
+            <h3>💻 Espacio Work-Friendly</h3>
+            <p>Conexión a internet simétrica de alta velocidad, enchufes en cada mesa y zonas de silencio.</p>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Sección de Productos / Servicios -->
+    <section class="seccion" id="productos">
+      <div class="contenedor">
+        <h2 class="text-center">Nuestras Especialidades</h2>
+        <div class="grid-2">
+          <div class="product-item">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800" alt="Taza de espresso y café artesanal en barra de madera de Café Aurora" loading="lazy" width="800" height="450">
+            <h3>Métodos de Extracción</h3>
+            <p>V60, Chemex, Aeropress y Espresso tradicional preparados por barista profesional certificada.</p>
+          </div>
+          <div class="product-item">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800" alt="Panadería recién horneada y croissants de Café Aurora" loading="lazy" width="800" height="450">
+            <h3>Repostería de Casa</h3>
+            <p>Croissants de mantequilla, Roles de canela y Galletas de avena con chispas de chocolate amargo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Señal de Confianza (Testimonios y Ubicación) -->
+    <section class="seccion bg-light" id="testimonios">
+      <div class="contenedor">
+        <h2 class="text-center">Lo que dicen nuestros clientes</h2>
+        <div class="grid-2">
+          <blockquote class="testimonial">
+            <p>"El mejor café de la zona para trabajar remoto. El WiFi nunca falla y el cappuccino es espectacular."</p>
+            <cite>— Mariana R., Diseñadora Freelance</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>"Atención de primera y un pan artesanal increíble. Se convirtió en mi parada obligatoria todas las mañanas."</p>
+            <cite>— Carlos G., Cliente Frecuente</cite>
+          </blockquote>
+        </div>
+        <div class="trust-badge text-center">
+          <p>📍 <strong>Ubicación:</strong> Av. Universidad #123, Col. Centro | 🕒 <strong>Horario:</strong> Lun a Sáb: 7:00 AM - 9:00 PM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario de Contacto con Validación Básica HTML5 -->
+    <section class="seccion" id="contacto">
+      <div class="contenedor max-width-small">
+        <h2 class="text-center">Contáctanos o Reserva</h2>
+        <p class="text-center">¿Tienes eventos, dudas o quieres hacer un pedido especial? Escríbenos.</p>
+        
+        <form action="#" method="post" class="form-contacto">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required minlength="3">
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo electrónico *</label>
+            <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono (10 dígitos) *</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="5512345678" pattern="[0-9]{10}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="asunto">Motivo de contacto *</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona una opción</option>
+              <option value="reserva">Reserva de mesa</option>
+              <option value="pedidos">Pedido especial / Panadería</option>
+              <option value="eventos">Eventos corporativos</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tus comentarios..." required minlength="10"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Enviar Solicitud</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="contenedor footer-content">
+      <p>&copy; 2026 Café Aurora. Todos los derechos reservados.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram de Café Aurora">Instagram</a> | 
+        <a href="#" aria-label="Facebook de Café Aurora">Facebook</a>
+      </div>
     </div>
+  </footer>
 
-    <footer>
-        <p>&copy; 2026 Café Ces - Sistema Fullstack con MySQL y Control de Roles.</p>
-    </footer>
-
-    <script>
-        function verSeccion(sec) {
-            document.getElementById('sec-landing').style.display = sec === 'landing' ? 'block' : 'none';
-            document.getElementById('sec-dashboard').style.display = sec === 'dashboard' ? 'block' : 'none';
-        }
-
-        function abrirModalLogin() {
-            let email = prompt("INICIO DE SESIÓN\n\nIngresa tu correo:\n• Administrador: admin@cafeces.com\n• Cliente: usuario@cafeces.com");
-            
-            if (email === 'admin@cafeces.com') {
-                alert("¡Bienvenido Administrador!\nAcceso concedido al Dashboard y gestión de base de datos MySQL.");
-                document.getElementById('nav-dash').style.display = 'inline';
-                document.getElementById('lbl-rol').innerText = "Rol: Administrador de Sistema";
-                verSeccion('dashboard');
-            } else if (email === 'usuario@cafeces.com') {
-                alert("¡Bienvenido Cliente!\nAcceso concedido en modo lectura de la Landing Page.");
-                document.getElementById('nav-dash').style.display = 'none';
-                verSeccion('landing');
-            } else if (email !== null) {
-                alert("Usuario no reconocido. Intenta con admin@cafeces.com o usuario@cafeces.com");
-            }
-        }
-
-        function agregarVenta(e) {
-            e.preventDefault();
-            let cliente = document.getElementById('v-cliente').value;
-            let producto = document.getElementById('v-producto').value;
-            let monto = parseFloat(document.getElementById('v-monto').value).toFixed(2);
-            let estatus = document.getElementById('v-estatus').value;
-
-            let tbody = document.getElementById('tb-body');
-            let newRow = `<tr>
-                <td>${cliente}</td>
-                <td>${producto}</td>
-                <td>$${monto}</td>
-                <td><strong style="color:${estatus === 'Completado' ? 'green' : 'orange'};">${estatus}</strong></td>
-            </tr>`;
-            
-            tbody.innerHTML += newRow;
-            alert("Venta registrada con éxito en la base de datos.");
-            document.getElementById('v-cliente').value = '';
-            document.getElementById('v-producto').value = '';
-            document.getElementById('v-monto').value = '';
-        }
-    </script>
 </body>
 </html>
